@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ewerton Silva — Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080810;
+      --surface: rgba(255,255,255,0.04);
+      --surface-hover: rgba(255,255,255,0.07);
+      --border: rgba(255,255,255,0.08);
+      --accent: #6EE7B7;
+      --accent2: #818CF8;
+      --accent3: #F472B6;
+      --text: #F1F5F9;
+      --muted: #64748B;
+      --card-bg: rgba(15,15,30,0.8);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── GRADIENT ORBS ── */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.15;
+      animation: float 8s ease-in-out infinite;
+    }
+    .orb-1 { width: 600px; height: 600px; background: var(--accent2); top: -200px; right: -100px; animation-delay: 0s; }
+    .orb-2 { width: 400px; height: 400px; background: var(--accent); bottom: 10%; left: -100px; animation-delay: 3s; }
+    .orb-3 { width: 300px; height: 300px; background: var(--accent3); top: 50%; right: 20%; animation-delay: 6s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-30px) scale(1.05); }
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 0;
+      background: rgba(8,8,16,0.7);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    nav .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 0 4rem;
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 40px; height: 1px;
+      background: var(--accent);
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s forwards;
+    }
+    .hero h1 .name-accent {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-desc {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s forwards;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      background: var(--accent);
+      color: #080810;
+      border-radius: 6px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(110,231,183,0.3); }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 6px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+      background: var(--surface);
+    }
+    .btn-ghost:hover { border-color: var(--accent2); color: var(--accent2); transform: translateY(-2px); }
+
+    /* ── HERO STATS ── */
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+      opacity: 0;
+      animation: fadeUp 0.8s 1s forwards;
+    }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    /* ── SKILLS ── */
+    .skills-section { padding: 6rem 0; }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.75rem;
+    }
+    .skill-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      transition: all 0.2s;
+      cursor: default;
+    }
+    .skill-tag:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background: var(--surface-hover);
+      transform: translateY(-2px);
+    }
+    .skill-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .filter-btn {
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(110,231,183,0.08);
+    }
+
+    /* ── REPOS ── */
+    .repos-section { padding: 2rem 0 6rem; }
+    .repos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+    .repo-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+    .repo-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 60%, rgba(110,231,183,0.03));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .repo-card:hover {
+      border-color: rgba(110,231,183,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(110,231,183,0.1);
+    }
+    .repo-card:hover::before { opacity: 1; }
+    .repo-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .repo-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .repo-arrow {
+      color: var(--muted);
+      font-size: 1rem;
+      transition: all 0.2s;
+      margin-left: 0.5rem;
+    }
+    .repo-card:hover .repo-arrow {
+      color: var(--accent);
+      transform: translate(2px, -2px);
+    }
+    .repo-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .repo-footer {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .repo-lang {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+    .lang-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+    .repo-stat {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    /* ── LOADING / ERROR ── */
+    .loading-state {
+      text-align: center;
+      padding: 4rem 0;
+      color: var(--muted);
+    }
+    .loading-spinner {
+      width: 40px; height: 40px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .error-state {
+      padding: 2rem;
+      border: 1px solid rgba(244,114,182,0.3);
+      border-radius: 8px;
+      background: rgba(244,114,182,0.05);
+      color: var(--accent3);
+      font-size: 0.85rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+    }
+    footer .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer p {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.75rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeUp 0.6s forwards;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+      .repos-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+  </style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="inner">
+    <span class="nav-logo">ES.</span>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="https://github.com/Ewertonslv" target="_blank">GitHub ↗</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="sobre">
+  <div class="container">
+    <p class="hero-eyebrow">Disponível para projetos</p>
+    <h1>
+      Ewerton<br>
+      <span class="name-accent">Silva</span>
+    </h1>
+    <p class="hero-desc">
+      Desenvolvedor apaixonado por tecnologia, construindo sistemas robustos com Delphi e explorando o ecossistema moderno de desenvolvimento. Transformo ideias complexas em soluções elegantes.
+    </p>
+    <div class="hero-actions">
+      <a href="#projetos" class="btn-primary">Ver projetos →</a>
+      <a href="https://github.com/Ewertonslv" target="_blank" class="btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+    <div class="hero-stats" id="hero-stats">
+      <div class="stat">
+        <div class="stat-num" id="stat-repos">—</div>
+        <div class="stat-label">Repositórios</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="stat-stars">—</div>
+        <div class="stat-label">Stars</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="stat-langs">—</div>
+        <div class="stat-label">Linguagens</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">// 01</span>
+      <h2 class="section-title">Stack & Skills</h2>
+    </div>
+    <div class="skills-grid" id="skills-grid">
+      <!-- Gerado por JS -->
+    </div>
+  </div>
+</section>
+
+<!-- REPOS -->
+<section class="repos-section" id="projetos">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">// 02</span>
+      <h2 class="section-title">Projetos</h2>
+    </div>
+
+    <div class="filter-bar" id="filter-bar">
+      <button class="filter-btn active" data-lang="all" onclick="filterRepos('all', this)">Todos</button>
+    </div>
+
+    <div id="repos-container">
+      <div class="loading-state">
+        <div class="loading-spinner"></div>
+        <p>Carregando projetos...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="inner">
+    <p>© 2025 Ewerton Silva — Construído com ❤️ e dados ao vivo do GitHub</p>
+    <a href="https://github.com/Ewertonslv" target="_blank">github.com/Ewertonslv ↗</a>
+  </div>
+</footer>
+
+<script>
+  const GITHUB_USERNAME = 'Ewertonslv';
+
+  const LANG_COLORS = {
+    'JavaScript': '#f1e05a', 'TypeScript': '#3178c6', 'Python': '#3572A5',
+    'Java': '#b07219', 'C#': '#239120', 'PHP': '#777bb4', 'Ruby': '#cc342d',
+    'Go': '#00add8', 'Rust': '#ce422b', 'Delphi': '#EE1F35', 'Pascal': '#E3F171',
+    'HTML': '#e34c26', 'CSS': '#563d7c', 'Shell': '#89e051', 'C': '#555555',
+    'C++': '#f34b7d', 'Kotlin': '#A97BFF', 'Swift': '#F05138', 'Dart': '#00B4AB',
+    'Vue': '#41b883', 'Svelte': '#ff3e00', 'default': '#6EE7B7'
+  };
+
+  const SKILLS = [
+    { name: 'Delphi', color: '#EE1F35' }, { name: 'Pascal', color: '#E3F171' },
+    { name: 'SQL', color: '#336791' }, { name: 'Git', color: '#F05032' },
+    { name: 'GitHub', color: '#6EE7B7' }, { name: 'HTML/CSS', color: '#e34c26' },
+    { name: 'JavaScript', color: '#f1e05a' }, { name: 'Python', color: '#3572A5' },
+    { name: 'REST API', color: '#818CF8' }, { name: 'Docker', color: '#2496ED' },
+    { name: 'MySQL', color: '#4479A1' }, { name: 'PostgreSQL', color: '#336791' },
+    { name: 'Linux', color: '#FCC624' }, { name: 'OOP', color: '#F472B6' },
+    { name: 'MVC', color: '#6EE7B7' }, { name: 'Scrum', color: '#818CF8' },
+  ];
+
+  // Render skills
+  const skillsGrid = document.getElementById('skills-grid');
+  SKILLS.forEach((s, i) => {
+    const el = document.createElement('div');
+    el.className = 'skill-tag fade-in';
+    el.style.animationDelay = `${i * 0.05}s`;
+    el.innerHTML = `<span class="skill-dot" style="background:${s.color}"></span>${s.name}`;
+    skillsGrid.appendChild(el);
+  });
+
+  let allRepos = [];
+
+  function getLangColor(lang) {
+    return LANG_COLORS[lang] || LANG_COLORS.default;
+  }
+
+  function renderRepos(repos) {
+    const container = document.getElementById('repos-container');
+    if (!repos.length) {
+      container.innerHTML = '<p style="color:var(--muted);text-align:center;padding:3rem 0">Nenhum repositório encontrado.</p>';
+      return;
+    }
+    const grid = document.createElement('div');
+    grid.className = 'repos-grid';
+    repos.forEach((repo, i) => {
+      const card = document.createElement('a');
+      card.className = 'repo-card fade-in';
+      card.href = repo.html_url;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+      card.style.animationDelay = `${i * 0.05}s`;
+      card.innerHTML = `
+        <div class="repo-card-header">
+          <span class="repo-name">${repo.name}</span>
+          <span class="repo-arrow">↗</span>
+        </div>
+        <p class="repo-desc">${repo.description || 'Sem descrição'}</p>
+        <div class="repo-footer">
+          ${repo.language ? `
+          <span class="repo-lang">
+            <span class="lang-dot" style="background:${getLangColor(repo.language)}"></span>
+            ${repo.language}
+          </span>` : ''}
+          ${repo.stargazers_count > 0 ? `<span class="repo-stat">⭐ ${repo.stargazers_count}</span>` : ''}
+          ${repo.forks_count > 0 ? `<span class="repo-stat">🔀 ${repo.forks_count}</span>` : ''}
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+    container.innerHTML = '';
+    container.appendChild(grid);
+  }
+
+  function filterRepos(lang, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filtered = lang === 'all' ? allRepos : allRepos.filter(r => r.language === lang);
+    renderRepos(filtered);
+  }
+
+  async function loadRepos() {
+    try {
+      const [reposRes, userRes] = await Promise.all([
+        fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`),
+        fetch(`https://api.github.com/users/${GITHUB_USERNAME}`)
+      ]);
+
+      const repos = await reposRes.json();
+      const user = await userRes.json();
+      allRepos = repos;
+
+      // Stats
+      const stars = repos.reduce((s, r) => s + r.stargazers_count, 0);
+      const langs = [...new Set(repos.filter(r => r.language).map(r => r.language))];
+      document.getElementById('stat-repos').textContent = repos.length;
+      document.getElementById('stat-stars').textContent = stars;
+      document.getElementById('stat-langs').textContent = langs.length;
+
+      // Filters
+      const filterBar = document.getElementById('filter-bar');
+      langs.sort().forEach(lang => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn';
+        btn.dataset.lang = lang;
+        btn.textContent = lang;
+        btn.onclick = () => filterRepos(lang, btn);
+        filterBar.appendChild(btn);
+      });
+
+      renderRepos(repos);
+    } catch (err) {
+      document.getElementById('repos-container').innerHTML = `
+        <div class="error-state">
+          <strong>Erro ao carregar repositórios.</strong><br>
+          Verifique sua conexão e tente novamente.<br>
+          <small style="opacity:0.6">${err.message}</small>
+        </div>`;
+    }
+  }
+
+  loadRepos();
+
+  // Intersection Observer para animações
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => {
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
