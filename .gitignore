@@ -1,5 +1,14 @@
+# Dependencies & build
+node_modules/
+dist/
+*.tsbuildinfo
+
 # Logs
 *.log
+
+# Env
+.env
+.env.local
 
 # OS
 .DS_Store

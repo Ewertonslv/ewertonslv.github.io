@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Ewerton Silva — CV</title>
+<style>
+  @page { size: A4; margin: 13mm 14mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ink: #0f172a;
+    --muted: #475569;
+    --faint: #64748b;
+    --accent: #0d7a6e;
+    --rule: #e2e8f0;
+  }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    font-size: 10.2px;
+    line-height: 1.45;
+  }
+  .name { font-size: 23px; font-weight: 800; letter-spacing: -0.02em; }
+  .title { font-size: 11.5px; font-weight: 600; color: var(--accent); margin-top: 2px; }
+  .contact { margin-top: 6px; font-size: 9.6px; color: var(--muted); }
+  .contact a { color: var(--muted); text-decoration: none; }
+  .contact span { white-space: nowrap; }
+  .sep { color: var(--rule); margin: 0 6px; }
+
+  header { padding-bottom: 9px; border-bottom: 2px solid var(--accent); }
+
+  section { margin-top: 12px; }
+  h2 {
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--accent); margin-bottom: 6px; padding-bottom: 3px; border-bottom: 1px solid var(--rule);
+  }
+  .summary { color: var(--muted); }
+
+  .job { margin-bottom: 8px; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-role { font-weight: 700; font-size: 11px; }
+  .job-co { color: var(--accent); font-weight: 600; }
+  .job-meta { color: var(--faint); font-size: 9.4px; white-space: nowrap; }
+  .job-note { color: var(--faint); font-size: 9.4px; margin: 1px 0 4px; }
+  ul { list-style: none; }
+  li { position: relative; padding-left: 12px; color: var(--muted); margin-bottom: 2.5px; }
+  li::before { content: ""; position: absolute; left: 2px; top: 6px; width: 3px; height: 3px; border-radius: 50%; background: var(--accent); }
+
+  .proj { margin-bottom: 5px; color: var(--muted); }
+  .proj b { color: var(--ink); }
+  .proj .pmeta { color: var(--faint); }
+
+  .skills div { margin-bottom: 3px; color: var(--muted); }
+  .skills b { color: var(--ink); display: inline-block; min-width: 92px; }
+</style>
+</head>
+<body>
+  <header>
+    <div class="name">Ewerton Silva</div>
+    <div class="title">AI &amp; Full Stack Engineer</div>
+    <div class="contact">
+      <span>ewertoncom297@gmail.com</span><span class="sep">|</span>
+      <span>github.com/Ewertonslv</span><span class="sep">|</span>
+      <span>linkedin.com/in/ewertonsllva</span><span class="sep">|</span>
+      <span>Brazil (UTC−3) · Remote</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Summary</h2>
+    <p class="summary">
+      AI &amp; Full Stack Engineer with 4+ years shipping production software. I bring the discipline of
+      regulated financial software to AI — building and <b>deploying</b> multi-agent systems on the Claude API
+      (orchestration, RAG, MCP) and full-stack apps in TypeScript and Python. I ship to production, not just
+      prototypes: a live AI SaaS on a custom domain and an open-source package published on npm.
+    </p>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <div class="job">
+      <div class="job-head">
+        <div><span class="job-role">Software Engineer</span> — <span class="job-co">Viggo Sistemas</span></div>
+        <div class="job-meta">2021 — Present</div>
+      </div>
+      <div class="job-note">GPTW-certified retail-tech ERP (founded 2009) — POS, fiscal and payments for 5,000+ retailers across 16 Brazilian states.</div>
+      <ul>
+        <li>Ship critical ERP features used by 5,000+ retailers: e-invoicing (NF-e, NFC-e, MDF-e), POS and financial reporting.</li>
+        <li>Implemented Brazil's CBS/IBS tax reform and SPED modules — high-stakes fiscal logic where bugs cost money.</li>
+        <li>Build internal AI tooling on the Claude API: multi-agent squads, automation and developer workflows.</li>
+        <li>Advanced PostgreSQL (triggers, procedures, 50+ tables); 400+ commits in a production system.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Selected Projects</h2>
+    <div class="proj"><b>recepia</b> — Multi-tenant AI WhatsApp receptionist SaaS; books and confirms appointments, classifying replies with an LLM. <span class="pmeta">Deployed live (recepia.app.br). FastAPI · PostgreSQL · LLM.</span></div>
+    <div class="proj"><b>evolution-whatsapp-mcp</b> — Open-source MCP server exposing WhatsApp as tools for any MCP client. <span class="pmeta">Published on npm. TypeScript · MCP SDK.</span></div>
+    <div class="proj"><b>Monarch-IA</b> — 12-agent orchestration platform with human-approval gates and circuit breakers; used it to build 7 apps. <span class="pmeta">Python · Claude API · Docker.</span></div>
+    <div class="proj"><b>liveaula</b> — Full-stack EdTech monorepo: Fastify API, Next.js web and Expo mobile sharing one typed contract. <span class="pmeta">TypeScript · Prisma.</span></div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="skills">
+      <div><b>Languages</b> Python, TypeScript, JavaScript, SQL, Dart</div>
+      <div><b>AI / LLM</b> Claude API, LLMs, RAG, MCP, Multi-Agent Systems, Prompt Engineering</div>
+      <div><b>Frontend</b> React, Next.js, Tailwind CSS, React Native</div>
+      <div><b>Backend</b> FastAPI, Node.js, Fastify, REST, WebSockets</div>
+      <div><b>Data &amp; DevOps</b> PostgreSQL, Prisma, Redis, Docker, GitHub Actions, Git</div>
+      <div><b>Spoken</b> Portuguese (native), English (professional working proficiency)</div>
+    </div>
+  </section>
+</body>
+</html>
