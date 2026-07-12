@@ -26,7 +26,7 @@ export const HERO = {
 }
 
 export const ABOUT = [
-  "I bring the discipline of regulated financial software to AI. For 4+ years I've engineered the ERP at Viggo Sistemas — a GPTW-certified retail-tech company (founded 2009) whose POS and fiscal platform runs 1,200+ businesses across 13 Brazilian states. I ship the high-stakes parts: e-invoicing (NF-e, NFC-e), Brazil's CBS/IBS tax reform, SPED and financial reporting — software where a bug costs a store real money, not just a failed test.",
+  "I bring the discipline of regulated financial software to AI. For 4+ years I've engineered the ERP at Viggo Sistemas — a GPTW-certified retail-tech company (founded 2009) whose POS and fiscal platform runs 5,000+ retailers across 16 Brazilian states. I ship the high-stakes parts: e-invoicing (NF-e, NFC-e), Brazil's CBS/IBS tax reform, SPED and financial reporting — software where a bug costs a store real money, not just a failed test.",
   'I bring that same production mindset to AI. I build and ship multi-agent systems on the Claude API — orchestration, RAG and MCP servers — with guardrails, observability and human-in-the-loop. My latest SaaS runs in production on a custom domain with a real database behind it, not a notebook demo.',
 ]
 
@@ -103,9 +103,9 @@ export const EXPERIENCE: ExperienceItem[] = [
     role: 'Software Engineer',
     company: 'Viggo Sistemas',
     period: '2021 — Present',
-    note: 'GPTW-certified retail-tech ERP (founded 2009) — POS, fiscal and payments for 1,200+ businesses across 13 Brazilian states.',
+    note: 'GPTW-certified retail-tech ERP (founded 2009) — POS, fiscal and payments for 5,000+ retailers across 16 Brazilian states.',
     bullets: [
-      'Ship critical ERP features used by 1,200+ businesses across 13 Brazilian states: e-invoicing (NF-e, NFC-e, MDF-e), POS and financial reporting.',
+      'Ship critical ERP features used by 5,000+ retailers across 16 Brazilian states: e-invoicing (NF-e, NFC-e, MDF-e), POS and financial reporting.',
       "Implemented Brazil's tax reform (CBS/IBS) and SPED modules — high-stakes fiscal logic where bugs cost money.",
       'Build internal AI tooling with the Claude API: multi-agent squads, automation and developer workflows.',
       'Advanced PostgreSQL (triggers, procedures, 50+ tables) across a production system with 400+ commits.',
@@ -122,7 +122,7 @@ export const SOCIALS = {
 
 export const STATS = [
   { num: '4+', label: 'Years shipping production software' },
-  { num: '1,200+', label: 'Businesses run on the ERP I build' },
+  { num: '5,000+', label: 'Retailers run on the ERP I build' },
   { num: 'npm', label: 'Open-source package published' },
   { num: 'Live', label: 'AI SaaS running in production' },
 ]
