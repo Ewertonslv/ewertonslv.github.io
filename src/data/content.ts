@@ -19,22 +19,22 @@ export interface Project {
 
 export const HERO = {
   name: 'Ewerton Silva',
-  title: 'AI & Full Stack Engineer · 4+ years shipping production systems',
+  title: 'AI Engineer — LLM Systems, Agents & MCP',
   tagline:
-    'I build production systems where mistakes are expensive — financial software, tax-compliance engines, and AI agents running real workloads.',
+    'I build production systems where mistakes are expensive — fiscal-compliance software, multi-agent LLM systems and MCP servers running real workloads.',
   availability: 'Open to remote work · Brazil (UTC−3)',
 }
 
 export const ABOUT = [
-  "I bring the discipline of regulated financial software to AI. For 4+ years I've engineered the ERP at Viggo Sistemas — a GPTW-certified retail-tech company (founded 2009) whose POS and fiscal platform runs 5,000+ retailers across 16 Brazilian states. I ship the high-stakes parts: e-invoicing (NF-e, NFC-e), Brazil's CBS/IBS tax reform, SPED and financial reporting — software where a bug costs a store real money, not just a failed test.",
-  'I bring that same production mindset to AI. I build and ship multi-agent systems on the Claude API — orchestration, RAG and MCP servers — with guardrails, observability and human-in-the-loop. My latest SaaS runs in production on a custom domain with a real database behind it, not a notebook demo.',
+  'AI Engineer with 4+ years shipping production software, now focused on AI automations, agents and internal tools. I bring the discipline of regulated fiscal software — where a bug is a fine — to LLM systems: multi-agent orchestration and MCP on the Claude API, serverless on AWS, and full-stack delivery in TypeScript/Node and Python. I ship, not prototype — a merged fix in BerriAI/litellm and a published open-source MCP server.',
+  "That production mindset comes from the ERP at Viggo Sistemas — a GPTW-certified retail-tech company (founded 2009) whose POS and fiscal platform runs 5,000+ retailers across 16 Brazilian states. I own its production PostgreSQL database (700+ tables), work daily in Brazil's high-stakes fiscal domain (NF-e, NFC-e, MDF-e, SPED, the CBS/IBS tax reform), and build the team's internal AI tooling as it shifts from Delphi to AI-assisted development.",
 ]
 
 export const PROJECTS: Project[] = [
   {
     name: 'recepia',
     blurb:
-      'Multi-tenant SaaS that turns a clinic’s WhatsApp into an AI receptionist — it confirms, reschedules and books appointments automatically, classifying each patient reply with an LLM (with a deterministic fallback).',
+      'Multi-tenant AI SaaS that books and confirms appointments over a clinic’s WhatsApp with LLM intent classification (deterministic fallback), a prompt-injection guardrail (OWASP LLM01), PII masking and cost/latency observability.',
     tags: ['FastAPI', 'PostgreSQL', 'Groq LLM', 'WhatsApp', 'LGPD'],
     highlight: 'Deployed & live',
     featured: true,
@@ -67,6 +67,14 @@ export const PROJECTS: Project[] = [
     links: [{ label: 'Code', href: 'https://github.com/Ewertonslv/Monarch-IA', kind: 'code' }],
   },
   {
+    name: 'scout',
+    blurb:
+      'A serverless multi-agent research pipeline on AWS: Step Functions fans out to Bedrock-powered Lambda agents (planner → workers → critic → synthesizer) that research a question in parallel and return a cited brief. Also exposed as an MCP server; runs on the free tier and deploys with one command.',
+    tags: ['AWS Lambda', 'Step Functions', 'Bedrock', 'DynamoDB', 'SAM'],
+    year: '2026',
+    links: [{ label: 'Code', href: 'https://github.com/Ewertonslv/scout', kind: 'code' }],
+  },
+  {
     name: 'liveaula',
     blurb:
       'A full-stack EdTech monorepo — a Fastify API, a Next.js web app and a React Native (Expo) mobile app sharing one end-to-end typed contract. One source of truth, three clients.',
@@ -87,7 +95,7 @@ export const STACK: StackGroup[] = [
   { label: 'Frontend', items: ['React', 'Next.js', 'Tailwind CSS', 'React Native'] },
   { label: 'Backend', items: ['FastAPI', 'Node.js', 'Fastify', 'REST', 'WebSockets'] },
   { label: 'Data', items: ['PostgreSQL', 'Prisma', 'SQLAlchemy', 'Redis'] },
-  { label: 'DevOps', items: ['Docker', 'GitHub Actions', 'Nginx', 'Git'] },
+  { label: 'Cloud & DevOps', items: ['AWS (Lambda, Step Functions, DynamoDB, Bedrock, SAM)', 'Docker', 'GitHub Actions', 'Git'] },
 ]
 
 export interface ExperienceItem {
@@ -102,13 +110,15 @@ export const EXPERIENCE: ExperienceItem[] = [
   {
     role: 'Software Engineer',
     company: 'Viggo Sistemas',
-    period: '2021 — Present',
+    period: '2022 — Present',
     note: 'GPTW-certified retail-tech ERP (founded 2009) — POS, fiscal and payments for 5,000+ retailers across 16 Brazilian states.',
     bullets: [
-      'Ship critical ERP features used by 5,000+ retailers across 16 Brazilian states: e-invoicing (NF-e, NFC-e, MDF-e), POS and financial reporting.',
-      "Implemented Brazil's tax reform (CBS/IBS) and SPED modules — high-stakes fiscal logic where bugs cost money.",
-      'Build internal AI tooling with the Claude API: multi-agent squads, automation and developer workflows.',
-      'Advanced PostgreSQL (triggers, procedures, 50+ tables) across a production system with 400+ commits.',
+      'Built from scratch a delivery-control module with a kanban board to track orders through fulfillment.',
+      'Led a large part of a 10-month migration that unified POS and Order sales logic and retired entire legacy modules.',
+      'Designed and built a usage-analytics system from scratch — a client-side tracker, a custom authenticated Horse/Delphi API, and an aggregated-counter model in PostgreSQL (upsert, offline-safe local queue) — so screen keep/remove calls are driven by real usage data, not guesses.',
+      "Work daily in Brazil's high-stakes fiscal domain — NF-e, NFC-e, MDF-e, SPED and the CBS/IBS tax reform — where a bug is a fine.",
+      'Build internal AI tooling on the Claude API — multi-agent squads and developer-workflow automation — as the team shifts from Delphi to AI-assisted development.',
+      'Own the production PostgreSQL database — 700+ tables (products, participants, fiscal, orders), triggers and stored procedures.',
     ],
   },
 ]
