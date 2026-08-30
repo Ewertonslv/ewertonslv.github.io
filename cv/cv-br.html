@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Ewerton Silva · Currículo</title>
+<style>
+  @page { size: A4; margin: 12mm 14mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --ink: #0f172a;
+    --muted: #475569;
+    --faint: #64748b;
+    --accent: #0d7a6e;
+    --rule: #e2e8f0;
+  }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    font-size: 10.1px;
+    line-height: 1.44;
+  }
+  .name { font-size: 23px; font-weight: 800; letter-spacing: -0.02em; }
+  .title { font-size: 11.5px; font-weight: 600; color: var(--accent); margin-top: 2px; }
+  .contact { margin-top: 6px; font-size: 9.6px; color: var(--muted); }
+  .contact a { color: var(--muted); text-decoration: none; }
+  .contact span { white-space: nowrap; }
+  .sep { color: var(--rule); margin: 0 6px; }
+
+  header { padding-bottom: 9px; border-bottom: 2px solid var(--accent); }
+
+  section { margin-top: 9px; }
+  h2 {
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--accent); margin-bottom: 5px; padding-bottom: 3px; border-bottom: 1px solid var(--rule);
+  }
+  .summary { color: var(--muted); }
+
+  .job { margin-bottom: 8px; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-role { font-weight: 700; font-size: 11px; }
+  .job-co { color: var(--accent); font-weight: 600; }
+  .job-meta { color: var(--faint); font-size: 9.4px; white-space: nowrap; }
+  .job-note { color: var(--faint); font-size: 9.4px; margin: 1px 0 3px; }
+  ul { list-style: none; }
+  li { position: relative; padding-left: 12px; color: var(--muted); margin-bottom: 2px; }
+  li::before { content: ""; position: absolute; left: 2px; top: 6px; width: 3px; height: 3px; border-radius: 50%; background: var(--accent); }
+
+  .proj { margin-bottom: 4.5px; color: var(--muted); }
+  .proj b { color: var(--ink); }
+  .proj .pmeta { color: var(--faint); }
+  .tag { color: var(--faint); font-size: 9.2px; }
+
+  .skills div { margin-bottom: 3px; color: var(--muted); }
+  .skills b { color: var(--ink); display: inline-block; min-width: 96px; }
+
+  /* Impede que um bloco parta no meio: a quebra cai sempre entre projetos/secoes. */
+  section, .job, .proj, li, .skills div { break-inside: avoid; page-break-inside: avoid; }
+  h2 { break-after: avoid; page-break-after: avoid; }
+
+  .todo { background: #fff3cd; color: #7a5b00; padding: 2px 5px; border-radius: 3px; font-weight: 600; }
+
+  /* Na tela, simula a folha A4 para que o preview bata com o PDF. Nao afeta a impressao. */
+  @media screen {
+    html { background: #e2e8f0; }
+    body {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 16px auto;
+      padding: 12mm 14mm;
+      background: #fff;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.16), 0 8px 24px rgba(15, 23, 42, 0.10);
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="name">Ewerton Silva</div>
+    <div class="title">Engenheiro de IA · Sistemas com LLM, Agentes e Avaliação</div>
+    <div class="contact">
+      <span><a href="mailto:ewertoncom297@gmail.com">ewertoncom297@gmail.com</a></span><span class="sep">|</span>
+      <span><a href="https://github.com/Ewertonslv">github.com/Ewertonslv</a></span><span class="sep">|</span>
+      <span><a href="https://linkedin.com/in/ewertonsllva">linkedin.com/in/ewertonsllva</a></span><span class="sep">|</span>
+      <span><a href="https://ewertonslv.github.io">ewertonslv.github.io</a></span><span class="sep">|</span>
+      <span>Caicó, RN · Remoto</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Resumo</h2>
+    <p class="summary">
+      Engenheiro de software com 4+ anos entregando sistema em produção, hoje focado em aplicações
+      baseadas em LLM: agentes, MCP e medição de qualidade. Trago para o mundo de LLM a disciplina de
+      software fiscal regulado, onde um bug vira multa: Python e FastAPI, orquestração multi-agente na
+      Claude API, serverless na AWS, e teste automatizado com CI em todo projeto que publico. Escrevi
+      uma ferramenta pública que mede o recall de guardrails de prompt-injection contra dataset rotulado,
+      e tenho correção mergeada no BerriAI/litellm. Prefiro colocar número no que construo a supor que
+      está funcionando.
+    </p>
+  </section>
+
+  <section>
+    <h2>Competências</h2>
+    <div class="skills">
+      <div><b>Linguagens</b> Python, TypeScript, JavaScript, SQL, Delphi</div>
+      <div><b>IA / LLM</b> Claude API, AWS Bedrock, sistemas multi-agente, MCP, RAG, busca vetorial e embeddings, engenharia de prompt, guardrails, avaliação com dataset rotulado (recall, precisão, F1)</div>
+      <div><b>Backend</b> FastAPI, Node.js, Fastify, REST, WebSockets</div>
+      <div><b>Dados</b> PostgreSQL, SQLite, sqlite-vec, Prisma, Redis, SQL</div>
+      <div><b>Cloud / DevOps</b> AWS (Lambda, Step Functions, DynamoDB, Bedrock, API Gateway, SAM), Docker, GitHub Actions, Git</div>
+      <div><b>Engenharia</b> Testes unitários e de integração (pytest, Vitest), CI/CD, Clean Code, design patterns, revisão de código</div>
+      <div><b>Frontend</b> React, Next.js, Tailwind CSS, React Native</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experiência</h2>
+    <div class="job">
+      <div class="job-head">
+        <div class="job-role">Engenheiro de Software <span class="job-co">· Viggo Sistemas</span></div>
+        <div class="job-meta">2022 · atual</div>
+      </div>
+      <div class="job-note">ERP de varejo certificado GPTW (fundado em 2009) · PDV, fiscal e pagamentos para 5.000+ varejistas em 16 estados.</div>
+      <ul>
+        <li>Construí do zero o módulo de controle de entregas, com painel kanban para acompanhar o pedido pelas etapas de expedição.</li>
+        <li>Liderei boa parte de uma migração de 10 meses que unificou a lógica de venda de PDV e Pedido e aposentou módulos legados inteiros.</li>
+        <li>Projetei e construí do zero um sistema de analytics de uso: rastreador no cliente, API autenticada própria (Horse/Delphi) e modelo de contadores agregados em PostgreSQL, com upsert e fila local à prova de queda de rede. A decisão de manter ou remover uma tela passou a sair de dado de uso real, não de achismo.</li>
+        <li>Trabalho diário no domínio fiscal brasileiro: NF-e, NFC-e, MDF-e, SPED e a reforma CBS/IBS. É um ambiente onde erro custa dinheiro do cliente, e isso moldou como eu testo.</li>
+        <li>Construo ferramentas internas de IA sobre a Claude API, com squads multi-agente e automação do fluxo de desenvolvimento, enquanto o time migra de Delphi para desenvolvimento assistido por IA.</li>
+        <li>Sou responsável pelo banco PostgreSQL de produção: 700+ tabelas (produtos, participantes, fiscal, pedidos), triggers e stored procedures.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projetos</h2>
+
+    <div class="proj">
+      <b>guardrail-bench</b> · mede o recall de um filtro de prompt-injection contra dataset público rotulado
+      (deepset/prompt-injections, 662 mensagens: 263 ataques e 399 legítimas). Roda qualquer callable Python,
+      reporta recall, precisão, F1 e matriz de confusão, lista os ataques que passaram, e quebra o build
+      abaixo do limiar escolhido. Nasceu de um resultado ruim meu: um filtro por regex que eu já tinha
+      colocado na frente de um modelo pegava 15,6% dos ataques, e eu nunca tinha medido. 48 testes.
+      <span class="pmeta">Python · Hugging Face datasets · CLI · repositório público.</span>
+    </div>
+
+    <div class="proj">
+      <b>recepia</b> · SaaS multi-tenant que agenda e confirma consultas por WhatsApp, com classificação de
+      intenção por LLM, guardrail de prompt-injection (OWASP LLM01), mascaramento de PII e observabilidade
+      de custo e latência por requisição. 223 testes automatizados e CI no GitHub Actions.
+      No ar em recepia.app.br, código aberto no GitHub.
+      <span class="pmeta">Python · FastAPI · PostgreSQL · LLM · LGPD.</span>
+    </div>
+
+    <div class="proj">
+      <b>liveaula</b> · plataforma de educação para aulas particulares, com três clientes sobre um contrato
+      tipado único: o professor registra a aula em menos de 30 segundos, o responsável recebe push e acompanha
+      a evolução do aluno, e um admin supervisiona tudo. Schemas Zod compartilhados fazem mudança de contrato
+      virar erro de tipo nos três apps em vez de bug em runtime. CI e deploy automatizados.
+      <span class="pmeta">TypeScript · Next.js 14 · Fastify · Prisma · PostgreSQL · React Native (Expo).</span>
+    </div>
+
+    <div class="proj">
+      <b>scout</b> · pipeline serverless de pesquisa multi-agente na AWS: Step Functions distribui o trabalho
+      entre agentes Lambda sobre Bedrock (planner, workers, crítico, sintetizador), com o crítico avaliando a
+      saída antes da síntese. Também exposto como servidor MCP. Infraestrutura como código e deploy por OIDC.
+      <span class="pmeta">AWS Lambda · Step Functions · DynamoDB · Bedrock · SAM · GitHub Actions.</span>
+    </div>
+
+    <div class="proj">
+      <b>Monarch-IA</b> · plataforma de orquestração de 12 agentes na Claude API, com portões de aprovação
+      humana e circuit breakers para conter agente em loop ou custo fora da curva.
+      <span class="pmeta">Python · Claude API · Docker.</span>
+    </div>
+
+    <div class="proj">
+      <b>brain-pessoal</b> <span class="tag">(projeto pessoal, repositório privado)</span> · servidor MCP de
+      memória com busca híbrida, combinando similaridade vetorial e palavra-chave sobre banco vetorial local
+      (sqlite-vec) com embeddings gerados na própria máquina (fastembed), sem chamada externa.
+      <span class="pmeta">Python · fastmcp · sqlite-vec · fastembed.</span>
+    </div>
+
+    <div class="proj">
+      <b>evolution-whatsapp-mcp</b> · servidor MCP open-source que expõe o WhatsApp como ferramentas para
+      qualquer cliente MCP. Publicado no npm.
+      <span class="pmeta">TypeScript · MCP SDK.</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Open Source</h2>
+    <ul>
+      <li><b>BerriAI/litellm</b> (gateway de LLM) · corrigi um bug silencioso de cálculo de custo: faixas de
+      preço customizadas acima de limiares não padronizados eram descartadas em <i>get_model_info</i>, e a
+      cobrança caía para a tarifa base sem avisar ninguém. Enviei a correção com teste de regressão;
+      revisada e mergeada pelos mantenedores (#30880).</li>
+      <li>Contribuições em análise em <b>bentoml/BentoML</b> e <b>IBM/mcp-context-forge</b>.</li>
+    </ul>
+  </section>
+
+
+  <section>
+    <h2>Formação</h2>
+    <div class="job">
+      <div class="job-head">
+        <div class="job-role">Sistemas de Informação <span class="job-co">· UFRN</span></div>
+        <div class="job-meta">desde 2017</div>
+      </div>
+      <div class="job-note">Universidade Federal do Rio Grande do Norte · Todas as disciplinas concluídas; TCC pendente.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Idiomas</h2>
+    <p class="summary">
+      Português nativo. Inglês com leitura e escrita técnicas sólidas, de uso diário em documentação,
+      papers, código e pull requests em projetos internacionais. Conversação ainda limitada, em prática ativa.
+    </p>
+  </section>
+</body>
+</html>
