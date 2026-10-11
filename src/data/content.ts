@@ -19,14 +19,14 @@ export interface Project {
 
 export const HERO = {
   name: 'Ewerton Silva',
-  title: 'Software Engineer · AI & Full-Stack',
+  title: 'AI Engineer · LLM Systems, Agents & MCP',
   tagline:
     'I build production systems where mistakes are expensive: fiscal-compliance software, multi-agent LLM systems and MCP servers running real workloads.',
   availability: 'Open to remote work · Brazil (UTC−3)',
 }
 
 export const ABOUT = [
-  'Software Engineer with 4+ years shipping production software, now focused on AI automations, agents and internal tools. I bring the discipline of regulated fiscal software, where a bug is a fine, to LLM systems: multi-agent orchestration and MCP on the Claude API, serverless on AWS, and full-stack delivery in TypeScript/Node and Python. I ship with tests and CI: a merged fix in BerriAI/litellm, a published open-source MCP server and a public benchmark for prompt-injection filters.',
+  'AI Engineer with 4+ years shipping production software, now focused on AI automations, agents and internal tools. I bring the discipline of regulated fiscal software, where a bug is a fine, to LLM systems: multi-agent orchestration and MCP on the Claude API, serverless on AWS, and full-stack delivery in TypeScript/Node and Python. I ship with tests and CI: a merged fix in BerriAI/litellm, a published open-source MCP server and a public benchmark for prompt-injection filters.',
   "That production mindset comes from the ERP at Viggo Sistemas, a GPTW-certified retail-tech company (founded 2009) whose POS and fiscal platform runs 5,000+ retailers across 16 Brazilian states. I own its production PostgreSQL database (700+ tables), work daily in Brazil's high-stakes fiscal domain (NF-e, NFC-e, MDF-e, SPED, the CBS/IBS tax reform), and build the team's internal AI tooling as it shifts from Delphi to AI-assisted development.",
 ]
 
