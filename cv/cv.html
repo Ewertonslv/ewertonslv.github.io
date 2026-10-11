@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Ewerton Silva — CV</title>
+<title>Ewerton Silva · CV</title>
 <style>
   @page { size: A4; margin: 13mm 14mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -17,8 +17,8 @@
   body {
     font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     color: var(--ink);
-    font-size: 10.2px;
-    line-height: 1.45;
+    font-size: 9.8px;
+    line-height: 1.42;
   }
   .name { font-size: 23px; font-weight: 800; letter-spacing: -0.02em; }
   .title { font-size: 11.5px; font-weight: 600; color: var(--accent); margin-top: 2px; }
@@ -29,7 +29,7 @@
 
   header { padding-bottom: 9px; border-bottom: 2px solid var(--accent); }
 
-  section { margin-top: 12px; }
+  section { margin-top: 10px; }
   h2 {
     font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
     color: var(--accent); margin-bottom: 6px; padding-bottom: 3px; border-bottom: 1px solid var(--rule);
@@ -52,16 +52,20 @@
 
   .skills div { margin-bottom: 3px; color: var(--muted); }
   .skills b { color: var(--ink); display: inline-block; min-width: 92px; }
+
+  section, .job, .proj, li, .skills div { break-inside: avoid; page-break-inside: avoid; }
+  h2 { break-after: avoid; page-break-after: avoid; }
 </style>
 </head>
 <body>
   <header>
     <div class="name">Ewerton Silva</div>
-    <div class="title">AI Engineer — LLM Systems, Agents &amp; MCP</div>
+    <div class="title">AI Engineer · LLM Systems, Agents &amp; MCP</div>
     <div class="contact">
       <span>ewertoncom297@gmail.com</span><span class="sep">|</span>
       <span>github.com/Ewertonslv</span><span class="sep">|</span>
       <span>linkedin.com/in/ewertonsllva</span><span class="sep">|</span>
+      <span>ewertonslv.github.io</span><span class="sep">|</span>
       <span>Brazil (UTC-3) · Remote</span>
     </div>
   </header>
@@ -70,10 +74,10 @@
     <h2>Summary</h2>
     <p class="summary">
       AI Engineer with 4+ years shipping production software, now focused on <b>AI automations, agents and
-      internal tools</b>. I bring the discipline of regulated fiscal software — where a bug is a fine — to LLM
+      internal tools</b>. I bring the discipline of regulated fiscal software, where a bug is a fine, to LLM
       systems: multi-agent orchestration and MCP on the Claude API, serverless on AWS, and full-stack delivery
-      in TypeScript/Node and Python. I ship, not prototype — a merged fix in BerriAI/litellm and a published
-      open-source MCP server.
+      in TypeScript/Node and Python. I ship with tests and CI: a merged fix in BerriAI/litellm, a published
+      open-source MCP server and a public benchmark for prompt-injection filters.
     </p>
   </section>
 
@@ -81,45 +85,65 @@
     <h2>Experience</h2>
     <div class="job">
       <div class="job-head">
-        <div><span class="job-role">Software Engineer</span> — <span class="job-co">Viggo Sistemas</span></div>
-        <div class="job-meta">2022 — Present</div>
+        <div><span class="job-role">Software Engineer</span> · <span class="job-co">Viggo Sistemas</span></div>
+        <div class="job-meta">2022 to present</div>
       </div>
-      <div class="job-note">GPTW-certified retail-tech ERP (founded 2009) — POS, fiscal and payments for 5,000+ retailers across 16 Brazilian states.</div>
+      <div class="job-note">GPTW-certified retail-tech ERP (founded 2009): POS, fiscal and payments for 5,000+ retailers across 16 Brazilian states.</div>
       <ul>
         <li>Built from scratch a <b>delivery-control module with a kanban board</b> to track orders through fulfillment.</li>
         <li>Led a large part of a <b>10-month migration</b> that unified POS and Order sales logic and retired entire legacy modules.</li>
-        <li>Designed and built a usage-analytics system from scratch — a client-side tracker, a custom authenticated Horse/Delphi API, and an aggregated-counter model in PostgreSQL (upsert, offline-safe local queue) — so screen keep/remove calls are driven by real usage data, not guesses.</li>
-        <li>Work daily in Brazil's high-stakes fiscal domain — NF-e, NFC-e, MDF-e, SPED and the CBS/IBS tax reform — where a bug is a fine.</li>
-        <li>Build internal AI tooling on the Claude API — multi-agent squads and developer-workflow automation — as the team shifts from Delphi to AI-assisted development.</li>
-        <li>Own the production PostgreSQL database — <b>700+ tables</b> (products, participants, fiscal, orders), triggers and stored procedures.</li>
+        <li>Designed and built a usage-analytics system from scratch: a client-side tracker, a custom authenticated Horse/Delphi API, and an aggregated-counter model in PostgreSQL (upsert, offline-safe local queue), so screen keep/remove calls are driven by real usage data, not guesses.</li>
+        <li>Work daily in Brazil's high-stakes fiscal domain (NF-e, NFC-e, MDF-e, SPED and the CBS/IBS tax reform), where a bug is a fine.</li>
+        <li>Build internal AI tooling on the Claude API (multi-agent squads and developer-workflow automation) as the team shifts from Delphi to AI-assisted development.</li>
+        <li>Own the production PostgreSQL database: <b>700+ tables</b> (products, participants, fiscal, orders), triggers and stored procedures.</li>
       </ul>
     </div>
   </section>
 
   <section>
     <h2>Selected Projects</h2>
-    <div class="proj"><b>recepia</b> — Multi-tenant AI SaaS that books and confirms appointments over WhatsApp with LLM intent classification, a prompt-injection guardrail (OWASP LLM01), PII masking and cost/latency observability. <span class="pmeta">Live at recepia.app.br · source on GitHub. FastAPI · PostgreSQL.</span></div>
-    <div class="proj"><b>evolution-whatsapp-mcp</b> — Built and published an open-source MCP server exposing WhatsApp as tools for any MCP client. <span class="pmeta">TypeScript · MCP SDK.</span></div>
-    <div class="proj"><b>Monarch-IA</b> — 12-agent orchestration platform on the Claude API, with human-approval gates and circuit breakers. <span class="pmeta">Python · Claude API · Docker.</span></div>
-    <div class="proj"><b>scout</b> — Serverless multi-agent research pipeline on AWS: Step Functions fans out to Bedrock-powered Lambda agents (planner → workers → critic → synthesizer); also exposed as an MCP server. <span class="pmeta">AWS Lambda · Step Functions · DynamoDB · Bedrock · SAM · GitHub Actions OIDC.</span></div>
+    <div class="proj"><b>recepia</b> · Multi-tenant AI SaaS that books and confirms appointments over WhatsApp with LLM intent classification, a prompt-injection guardrail (OWASP LLM01), PII masking and cost/latency observability. 260+ automated tests and CI on GitHub Actions. <span class="pmeta">Live at recepia.app.br · source on GitHub. FastAPI · PostgreSQL.</span></div>
+    <div class="proj"><b>guardrail-bench</b> · CLI that measures the recall of a prompt-injection filter against a labelled public dataset (deepset/prompt-injections, 662 messages: 263 attacks, 399 legitimate). Reports recall, precision, F1 and a confusion matrix, lists the attacks that got through, and fails a CI build below a chosen threshold. Born from measuring my own regex filter: it caught 15.6% of attacks. <span class="pmeta">Python, standard library only · MIT · 50 tests · public repository.</span></div>
+    <div class="proj"><b>evolution-whatsapp-mcp</b> · Built and published an open-source MCP server exposing WhatsApp as tools for any MCP client. <span class="pmeta">TypeScript · MCP SDK · published on npm.</span></div>
+    <div class="proj"><b>scout</b> · Serverless multi-agent research pipeline on AWS: Step Functions fans out to Bedrock-powered Lambda agents (planner, workers, critic, synthesizer); also exposed as an MCP server. Infrastructure as code with an AWS SAM template, 20 offline tests (pytest + moto) and CI. <span class="pmeta">AWS Lambda · Step Functions · DynamoDB · Bedrock · SAM · GitHub Actions.</span></div>
+    <div class="proj"><b>Monarch-IA</b> · 12-agent orchestration platform on the Claude API, with human-approval gates and circuit breakers. <span class="pmeta">Python · Claude API · Docker.</span></div>
+    <div class="proj"><b>liveaula</b> · Full-stack EdTech monorepo: a Fastify API, a Next.js web app and a React Native (Expo) mobile app sharing one typed contract (Zod schemas), so a contract change becomes a type error in all three apps instead of a runtime bug. CI on GitHub Actions. <span class="pmeta">TypeScript · Next.js · Fastify · Prisma · PostgreSQL · Expo.</span></div>
   </section>
 
   <section>
     <h2>Open Source</h2>
-    <div class="proj">Fixed a silent cost-tracking bug in <b>BerriAI/litellm</b> (LLM gateway, ~600M downloads/month): custom tiered pricing above non-standard thresholds was dropped in <code>get_model_info</code>, defaulting billing to base rates. <span class="pmeta">Shipped fix + regression test; reviewed and merged by maintainers (#30880).</span></div>
+    <ul>
+      <li>Fixed a silent cost-tracking bug in <b>BerriAI/litellm</b> (LLM gateway, about 90M downloads/month on PyPI): custom tiered pricing above non-standard thresholds was dropped in <code>get_model_info</code>, defaulting billing to base rates. Shipped fix + regression test; reviewed and merged by maintainers (#30880).</li>
+      <li>Open PRs in <b>BerriAI/litellm</b> (#30881, approved, waiting for merge), <b>modelcontextprotocol/servers</b> and <b>IBM/mcp-context-forge</b>.</li>
+    </ul>
   </section>
 
   <section>
     <h2>Skills</h2>
     <div class="skills">
-      <div><b>Programming</b> TypeScript, JavaScript, Python, SQL, Dart</div>
-      <div><b>AI / LLM</b> Claude API, LLMs, RAG, MCP, Multi-Agent Systems, Prompt Engineering</div>
-      <div><b>Frontend</b> React, Next.js, Tailwind CSS, React Native</div>
+      <div><b>Programming</b> Python, TypeScript, JavaScript, SQL, Delphi</div>
+      <div><b>AI / LLM</b> Claude API, AWS Bedrock, LLMs, MCP, Multi-Agent Systems, Prompt Engineering, guardrails and evaluation with labelled datasets (recall, precision, F1)</div>
       <div><b>Backend</b> FastAPI, Node.js, Fastify, REST, WebSockets</div>
+      <div><b>Frontend</b> React, Next.js, Tailwind CSS, React Native</div>
+      <div><b>Data</b> PostgreSQL, SQLite, Prisma, SQL</div>
       <div><b>Cloud &amp; DevOps</b> AWS (Lambda, Step Functions, DynamoDB, Bedrock, API Gateway, SAM), Docker, GitHub Actions, Git</div>
-      <div><b>Data</b> PostgreSQL, Prisma, Redis, SQL</div>
-      <div><b>Languages</b> Portuguese (native) · English — strong technical reading &amp; writing (daily use with docs, code and PRs in international projects); spoken: limited, actively improving</div>
+      <div><b>Testing</b> pytest, Vitest, CI/CD, code review</div>
     </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="job">
+      <div class="job-head">
+        <div><span class="job-role">Information Systems</span> · <span class="job-co">UFRN</span></div>
+      </div>
+      <div class="job-note">Universidade Federal do Rio Grande do Norte. Coursework complete, final thesis pending.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Languages</h2>
+    <p class="summary">Portuguese (native). English: strong technical reading and writing (daily use with docs, code and PRs in international projects); spoken: limited, actively improving.</p>
   </section>
 </body>
 </html>

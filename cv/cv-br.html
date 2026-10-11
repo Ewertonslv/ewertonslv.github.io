@@ -104,9 +104,9 @@
     <h2>Competências</h2>
     <div class="skills">
       <div><b>Linguagens</b> Python, TypeScript, JavaScript, SQL, Delphi</div>
-      <div><b>IA / LLM</b> Claude API, AWS Bedrock, sistemas multi-agente, MCP, RAG, busca vetorial e embeddings, engenharia de prompt, guardrails, avaliação com dataset rotulado (recall, precisão, F1)</div>
+      <div><b>IA / LLM</b> Claude API, AWS Bedrock, sistemas multi-agente, MCP, engenharia de prompt, guardrails, avaliação com dataset rotulado (recall, precisão, F1)</div>
       <div><b>Backend</b> FastAPI, Node.js, Fastify, REST, WebSockets</div>
-      <div><b>Dados</b> PostgreSQL, SQLite, sqlite-vec, Prisma, Redis, SQL</div>
+      <div><b>Dados</b> PostgreSQL, SQLite, Prisma, SQL</div>
       <div><b>Cloud / DevOps</b> AWS (Lambda, Step Functions, DynamoDB, Bedrock, API Gateway, SAM), Docker, GitHub Actions, Git</div>
       <div><b>Engenharia</b> Testes unitários e de integração (pytest, Vitest), CI/CD, Clean Code, design patterns, revisão de código</div>
       <div><b>Frontend</b> React, Next.js, Tailwind CSS, React Native</div>
@@ -140,14 +140,14 @@
       (deepset/prompt-injections, 662 mensagens: 263 ataques e 399 legítimas). Roda qualquer callable Python,
       reporta recall, precisão, F1 e matriz de confusão, lista os ataques que passaram, e quebra o build
       abaixo do limiar escolhido. Nasceu de um resultado ruim meu: um filtro por regex que eu já tinha
-      colocado na frente de um modelo pegava 15,6% dos ataques, e eu nunca tinha medido. 48 testes.
+      colocado na frente de um modelo pegava 15,6% dos ataques, e eu nunca tinha medido. 50 testes e CI.
       <span class="pmeta">Python · Hugging Face datasets · CLI · repositório público.</span>
     </div>
 
     <div class="proj">
       <b>recepia</b> · SaaS multi-tenant que agenda e confirma consultas por WhatsApp, com classificação de
       intenção por LLM, guardrail de prompt-injection (OWASP LLM01), mascaramento de PII e observabilidade
-      de custo e latência por requisição. 223 testes automatizados e CI no GitHub Actions.
+      de custo e latência por requisição. 266 testes automatizados e CI no GitHub Actions.
       No ar em recepia.app.br, código aberto no GitHub.
       <span class="pmeta">Python · FastAPI · PostgreSQL · LLM · LGPD.</span>
     </div>
@@ -156,14 +156,14 @@
       <b>liveaula</b> · plataforma de educação para aulas particulares, com três clientes sobre um contrato
       tipado único: o professor registra a aula em menos de 30 segundos, o responsável recebe push e acompanha
       a evolução do aluno, e um admin supervisiona tudo. Schemas Zod compartilhados fazem mudança de contrato
-      virar erro de tipo nos três apps em vez de bug em runtime. CI e deploy automatizados.
+      virar erro de tipo nos três apps em vez de bug em runtime. CI automatizado.
       <span class="pmeta">TypeScript · Next.js 14 · Fastify · Prisma · PostgreSQL · React Native (Expo).</span>
     </div>
 
     <div class="proj">
       <b>scout</b> · pipeline serverless de pesquisa multi-agente na AWS: Step Functions distribui o trabalho
       entre agentes Lambda sobre Bedrock (planner, workers, crítico, sintetizador), com o crítico avaliando a
-      saída antes da síntese. Também exposto como servidor MCP. Infraestrutura como código e deploy por OIDC.
+      saída antes da síntese. Também exposto como servidor MCP. Infraestrutura como código (AWS SAM), 20 testes offline e CI.
       <span class="pmeta">AWS Lambda · Step Functions · DynamoDB · Bedrock · SAM · GitHub Actions.</span>
     </div>
 
@@ -172,6 +172,7 @@
       humana e circuit breakers para conter agente em loop ou custo fora da curva.
       <span class="pmeta">Python · Claude API · Docker.</span>
     </div>
+
 
     <div class="proj">
       <b>brain-pessoal</b> <span class="tag">(projeto pessoal, repositório privado)</span> · servidor MCP de
@@ -194,7 +195,7 @@
       preço customizadas acima de limiares não padronizados eram descartadas em <i>get_model_info</i>, e a
       cobrança caía para a tarifa base sem avisar ninguém. Enviei a correção com teste de regressão;
       revisada e mergeada pelos mantenedores (#30880).</li>
-      <li>Contribuições em análise em <b>bentoml/BentoML</b> e <b>IBM/mcp-context-forge</b>.</li>
+      <li>PRs abertos em <b>BerriAI/litellm</b> (#30881, aprovado, aguardando merge), <b>modelcontextprotocol/servers</b> e <b>IBM/mcp-context-forge</b>.</li>
     </ul>
   </section>
 
