@@ -24,7 +24,7 @@ function ProjectCard({ project }: { project: Project }) {
         <div className="order-first overflow-hidden rounded-xl border border-border sm:order-last sm:w-1/2 sm:shrink-0">
           <img
             src={project.image}
-            alt={`${project.name} — live product screenshot`}
+            alt={`${project.name}, live product screenshot`}
             loading="lazy"
             className="w-full"
           />
